@@ -4,6 +4,7 @@ import (
 	"log"
 	"os"
 
+	"github.com/aws-app/controllers"
 	"github.com/aws-app/models"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
@@ -19,7 +20,7 @@ func main() {
 	db.LogMode(true)
 	db.AutoMigrate(&models.User{}, &models.Follower{}, &models.Photo{}, &models.Comment{})
 
-	r := registerRoutes()
+	r := controllers.StartUp()
 	port := os.Getenv("PORT")
 
 	if port == "" {

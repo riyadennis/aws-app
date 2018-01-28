@@ -1,6 +1,12 @@
 package models
 
-import "time"
+import (
+	"time"
+
+	"github.com/jinzhu/gorm"
+)
+
+var db *gorm.DB
 
 //struct that will define user table
 type User struct {
