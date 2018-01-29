@@ -16,6 +16,7 @@ func StartUp() *gin.Engine {
 	r.Static("/public", "./public")
 	r.GET("/", Home)
 	r.GET("/signup", SignupForm)
+	r.POST("/signup", Signup)
 	return r
 }
 

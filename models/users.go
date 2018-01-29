@@ -15,3 +15,15 @@ func FindUserByID(id uint) (*User, error) {
 
 	return u, nil
 }
+
+//gets user from database as per the username
+func FindUserByUserName(userName string) (*User, error) {
+	u := &User{}
+	if err := db.Where("username = ?", userName).First(&u); err.Error != nil {
+		return nil, err.Error
+	}
+	if u.ID == 0 {
+		return nil, errors.New("User not found")
+	}
+	return u, nil
+}

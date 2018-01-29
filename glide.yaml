@@ -1,0 +1,14 @@
+package: github.com/aws-app
+import:
+- package: github.com/gin-contrib/sessions
+- package: github.com/gin-gonic/gin
+  version: ~1.2.0
+- package: github.com/jinzhu/gorm
+  version: ~1.0.0
+  subpackages:
+  - dialects/sqlite
+- package: github.com/sirupsen/logrus
+  version: ~1.0.4
+- package: golang.org/x/crypto
+  subpackages:
+  - bcrypt
