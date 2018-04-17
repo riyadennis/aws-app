@@ -1,12 +1,12 @@
 package controllers
 
 import (
-	"log"
 	"net/http"
 
 	"github.com/aws-app/models"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
+	logging "github.com/sirupsen/logrus"
 	"golang.org/x/crypto/bcrypt"
 )
 
@@ -27,14 +27,15 @@ func Signup(ctx *gin.Context) {
 		Password: string(hashedPassword),
 	}
 	session := sessions.Default(ctx)
-	if !validateUserName(ctx, session, user) {
-		log.Println("Creating DB user:", user.Username)
-	}
+	validateUserName(ctx, session, user)
 
 }
 
 func validateUserName(ctx *gin.Context, session sessions.Session, user *models.User) bool {
-	u, _ := models.FindUserByUserName(ctx.PostForm("username"))
+	u, err := models.FindUserByUserName(ctx.PostForm("username"))
+	if err != nil {
+		logging.Fatalf("Error finding user %s", err.Error)
+	}
 	if u != nil {
 		message := "This username is not available, please try another one"
 		session.AddFlash(message)
