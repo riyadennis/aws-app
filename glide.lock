@@ -1,5 +1,5 @@
-hash: a523a1817cc587d32d808e2c80f7edeab07f2cebf72b258977e8f5553316ac82
-updated: 2018-01-28T17:11:39.61924411Z
+hash: 3acd5a4fc12f80bd0341b4f2b11b5769264b83cafdf49fd8282ac1d3eea1d132
+updated: 2018-04-18T21:16:40.422336+01:00
 imports:
 - name: github.com/boj/redistore
   version: 4562487a4bee9a7c272b72bfaeda4917d0a47ab9
@@ -46,7 +46,9 @@ imports:
 - name: github.com/mattn/go-sqlite3
   version: 9bdd5428f7d3754cbda0efab73be02be36e921ed
 - name: github.com/sirupsen/logrus
-  version: d682213848ed68c0a260ca37d6dd5ace8423f5ba
+  version: c155da19408a8799da419ed3eeb0cb5db0ad5dbc
+- name: github.com/stretchr/testify
+  version: 12b6f73e6084dad08a7c6e575284b177ecafbc71
 - name: github.com/ugorji/go
   version: f96c3ef8537241b4d508df6db3e0337d3130e50b
   subpackages:
