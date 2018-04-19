@@ -3,6 +3,7 @@ package lib
 import (
 	"github.com/aws-app/models"
 	"github.com/jinzhu/gorm"
+	_ "github.com/jinzhu/gorm/dialects/sqlite"
 )
 
 func SetUpDB(dbName string) error {
