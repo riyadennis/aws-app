@@ -32,9 +32,13 @@ func Signup(ctx *gin.Context) {
 }
 
 func validateUserName(ctx *gin.Context, session sessions.Session, user *models.User) bool {
-	u, err := models.FindUserByUserName(ctx.PostForm("username"))
+	userName := ctx.PostForm("username")
+	if userName == "" {
+		return false
+	}
+	u, err := models.FindUserByUserName(userName)
 	if err != nil {
-		logging.Fatalf("Error finding user %s", err.Error)
+		logging.Fatalf("Error finding user %v", err.Error)
 	}
 	if u != nil {
 		message := "This username is not available, please try another one"

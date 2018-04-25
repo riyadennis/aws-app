@@ -2,12 +2,7 @@ package models
 
 import (
 	"time"
-
-	"github.com/jinzhu/gorm"
-	logging "github.com/sirupsen/logrus"
 )
-
-var db *gorm.DB
 
 //struct that will define user table
 type User struct {
@@ -37,15 +32,4 @@ type Comment struct {
 	PhotoID   uint
 	Text      string
 	CreatedAt time.Time
-}
-
-func setUpDB() *gorm.DB {
-	db, err := gorm.Open("sqlite3", "userdata.db")
-	if err != nil {
-		logging.Fatalf("Unable to connect to database, got error %s", err)
-	}
-	defer db.Close()
-	db.LogMode(true)
-	db.AutoMigrate(&User{}, &Follower{}, &Photo{}, &Comment{})
-	return db
 }
