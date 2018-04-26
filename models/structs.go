@@ -33,3 +33,36 @@ type Comment struct {
 	Text      string
 	CreatedAt time.Time
 }
+func NewUser(email,username,password, fullName string) (*User){
+	return &User{
+		Email: email,
+		Username: username,
+		Password: password,
+		FullName:fullName,
+	}
+}
+
+func NewFollower(userID, followerId uint) *Follower{
+	return &Follower{
+		UserID: userID,
+		FollowerID: followerId,
+	}
+}
+
+func NewPhoto(userId,likes uint, fileName,caption string, createdAt time.Time) *Photo{
+	return &Photo{
+		UserID:userId,
+		Filename: fileName,
+		Caption: caption,
+		Likes: likes,
+		CreatedAt: createdAt,
+	}
+}
+func NewComment(userID, photoID uint, text string, createdAt time.Time) *Comment{
+	return &Comment{
+		UserID: userID,
+		PhotoID: photoID,
+		Text: text,
+		CreatedAt: createdAt,
+	}
+}
