@@ -27,7 +27,9 @@ func Signup(ctx *gin.Context) {
 		Password: string(hashedPassword),
 	}
 	session := sessions.Default(ctx)
-	validateUserName(ctx, session, user)
+	if validateUserName(ctx, session, user) {
+		ctx.Redirect(302, "/photos")
+	}
 
 }
 
@@ -38,7 +40,7 @@ func validateUserName(ctx *gin.Context, session sessions.Session, user *models.U
 	}
 	u, err := models.FindUserByUserName(userName)
 	if err != nil {
-		logging.Fatalf("Error finding user %v", err.Error)
+		logging.Fatalf("Error finding user %v", err)
 	}
 	if u != nil {
 		message := "This username is not available, please try another one"
