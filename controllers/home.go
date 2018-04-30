@@ -8,7 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-const userKey = "userid"
+const userKey = "username"
 
 //handler that handles the home urls
 func Home(c *gin.Context) {

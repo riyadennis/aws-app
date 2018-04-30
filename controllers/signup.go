@@ -28,6 +28,9 @@ func Signup(ctx *gin.Context) {
 	}
 	session := sessions.Default(ctx)
 	if validateUserName(ctx, session, user) {
+		logging.Infof("Found session user: %v\n", user)
+		session.Set(userKey, user.Username)
+		session.Save()
 		ctx.Redirect(302, "/photos")
 	}
 
